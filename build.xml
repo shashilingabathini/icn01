@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project  name="icn_plugin" default="build">
+    <target name="build" depends="clean , compile , package"></target>
+    <!-- define libs path-->
+    <property name="libs" value="./libs" />
+    <property name="project_name" value="icn_plugin.jar"/>
+    <path id="classpath">
+        <filelist dir="libs">
+            <file name="navigatorAPI.jar"></file>
+        </filelist>
+    </path>
+    <target name="clean">
+        <delete dir="temp"/>
+        <delete file="${project_name}"/>
+    </target>
+    <target name="compile">
+        <mkdir dir="temp"/>
+        <javac source="1.8" target="1.8" srcdir="src" destdir="temp" debug="true">
+            <classpath refid="classpath"/>
+            <include name="**/*.java"/>
+        </javac>
+    </target>
+    <target name="package">
+        <copy todir="temp">
+            <fileset dir="src">
+                <filename name="**/*"/>
+            </fileset>
+        </copy>
+        <jar jarfile="${project_name}">
+            <fileset dir="temp" includes="**/*"/>
+            <manifest>
+                <attribute name="Plugin-Class" value="icm.api.plugin.ICNPlugin"/>
+            </manifest>
+        </jar>
+        <delete dir="./temp" />
+    </target>
+</project>

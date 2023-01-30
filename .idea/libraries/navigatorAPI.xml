@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="navigatorAPI">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/libs/navigatorAPI.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
