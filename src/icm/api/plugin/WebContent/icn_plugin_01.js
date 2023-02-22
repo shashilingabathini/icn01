@@ -2,7 +2,8 @@
 require([
     "ecm/model/Desktop",
     "dojo/aspect",
-    "dojo/_base/lang"
+    "dojo/_base/lang",
+    "ecm/widget/viewer/ContentViewer"
 ], function(Desktop, aspect,lang) {
 
     var handler = aspect.after(Desktop,"onDesktopLoaded",lang.hitch(this,function(d) {
@@ -11,6 +12,11 @@ require([
         window.d1 = this;
     }));
 
-    window.handler = handler; // this is just for manipulation during runtime
+    // proxy the document open
+    handler = aspect.after(ContentViewer.prototype,"open",lang.hitch(this,function(item,openInBackground,pageNumber) {
+        alert('document is opened');
 
+    }),true);
+
+    window.handler = handler;
 });

@@ -8,5 +8,6 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="navigatorAPI" level="project" />
+    <orderEntry type="library" name="Jace" level="project" />
   </component>
 </module>
