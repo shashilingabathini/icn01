@@ -13,6 +13,7 @@ public class OnSweepAction implements SweepActionHandler {
        builder.append("Total Sweep Items :"+sweepItems.length);
        builder.append("\n");
        HandlerCallContext handlerCallContext =  HandlerCallContext.getInstance();
+       // new changes are added as a comment is a source code
        for(int x = 0; x < sweepItems.length; x++) {
            if(handlerCallContext != null && handlerCallContext.isShuttingDown()) {
                System.out.println("Handler Context Shutting down in middle of processing");
