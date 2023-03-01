@@ -5,7 +5,7 @@ require([
     "dojo/_base/lang",
     "ecm/widget/viewer/ContentViewer"
 ], function(Desktop, aspect,lang) {
-
+/*
     var handler = aspect.after(Desktop,"onDesktopLoaded",lang.hitch(this,function(d) {
         console.log('desktop loaded');
         window.d = d;
@@ -19,7 +19,7 @@ require([
     }),true);
 
     window.handler = handler;
-
+*/
     // all script adaptor handlers for [AddCase] Page
 
     function AddCaseAdaptor(adaptor , payload) { // this is only meant for add case action
@@ -27,10 +27,9 @@ require([
         console.log(payload);
         if(!adaptor || !payload)
             return;
+
         this.adaptor = adaptor;
         this.payload =  payload; // local to function class variables
-
-
 
     }
 
