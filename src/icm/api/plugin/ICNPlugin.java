@@ -10,12 +10,12 @@ public class ICNPlugin extends Plugin {
 
     @Override
     public String getId() {
-        return "icn_plugin_01";
+        return "icn";
     }
 
     @Override
     public String getName(Locale locale) {
-        return "ICN_Plugin_01";
+        return "icn";
     }
 
     @Override
@@ -26,12 +26,12 @@ public class ICNPlugin extends Plugin {
 
     @Override
     public String getScript() {
-        return "icn_plugin_01.js";
+        return "icn.js";
     }
 
     @Override
     public String getDojoModule() {
-        return "icn_plugin_01";
+        return "icn";
     }
 
 }
