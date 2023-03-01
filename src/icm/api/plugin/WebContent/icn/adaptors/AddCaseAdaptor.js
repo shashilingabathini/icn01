@@ -40,7 +40,7 @@ define(["dojo/_base/declare","icm/model/properties/controller/ControllerManager"
                           this.showOrHideProperty([p1,p2], [true, false],controller);
                     }
                 })); // watch the changes of this field
-                this.unbindController(editable);
+               // this.unbindController(editable);
             }
         },
         bindController : function(editable) {
