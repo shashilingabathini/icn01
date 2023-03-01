@@ -61,7 +61,7 @@ define(["dojo/_base/declare","icm/model/properties/controller/ControllerManager"
                 }
                 controller.endChangeSet();
             }
-            if(enableConsoleDebug)
+            if(this.enableConsoleDebug)
                 console.log('EXIT >> showOrHideProperty');
         }
 
