@@ -12,7 +12,8 @@ define(["dojo/_base/declare","icn/adaptors/AddCaseAdaptor"], function(declare,Ad
             this.initCall();
         },
         initCall : function() {
-            switch (pageName) {
+            console.log('current page name is : '+this.pageName);
+            switch (this.pageName) {
                 case "AddCasePage" :
                     this.initializeAddCasePageCalls();
                     break;
