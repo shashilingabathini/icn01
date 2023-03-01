@@ -24,12 +24,21 @@ define(["dojo/_base/declare","icm/model/properties/controller/ControllerManager"
                     console.log(' solution prefix is '+prefix);
                 var pocTypeName =  prefix + "_" + "POCType";
                 var propertyController = controller.getPropertyController(pocTypeName);
-                propertyController.watch("value",lang.hitch(this,function(o  , n) {
+                propertyController.watch("value",lang.hitch(this,function(v) {
                     if(this.enableConsoleDebug) {
-                        console.log(pocTypeName + " changes are detected in ui .");
-                        console.log("Old "+o+" , New "+n);
+                        console.log('v is '+v);
+                    }
+                    if(v && v == "POC01") { // show only poc 01 comments text area and hide poc 02 comments area
+                          var p1 = prefix + "_" + "POCType1Comments";
+                          var p2 =  prefix + "_" + "POCType2Comments";
+                          this.showOrHideProperty([p1,p2], [true, false],controller);
+                    } else if(v && v == "POC02") {
+                          var p1 = prefix + "_" + "POCType1Comments";
+                          var p2 =  prefix + "_" + "POCType2Comments";
+                          this.showOrHideProperty([p1,p2], [false, true],controller);
                     }
                 })); // watch the changes of this field
+                this.unbindController(editable);
             }
         },
         bindController : function(editable) {
@@ -37,6 +46,15 @@ define(["dojo/_base/declare","icm/model/properties/controller/ControllerManager"
         },
         unbindController : function(editable) {
             return ControllerManager.unbind(editable);
+        },
+        showOrHideProperty : function(symbolicNames , showHides , controller) {
+            if(lang.isArray(symbolicNames) && lang.isArray(showHides) && symbolicNames.length > 0 && showHides.length  > 0 && symbolicNames.length == showHides.length) {
+                controller.beginChangeSet();
+                for(var x  = 0; x < symbolicNames.length ; x++) {
+                    controller.getPropertyController(symbolicNames[x]).set("hidden",showHides[x]);
+                }
+                controller.endChangeSet();
+            }
         }
 
     });
