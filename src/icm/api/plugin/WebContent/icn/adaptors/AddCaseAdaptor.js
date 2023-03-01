@@ -50,11 +50,13 @@ define(["dojo/_base/declare","icm/model/properties/controller/ControllerManager"
             return ControllerManager.unbind(editable);
         },
         showOrHideProperty : function(symbolicNames , showHides , controller) {
-            if(enableConsoleDebug)
+            if(this.enableConsoleDebug)
                 console.log('Entry >> showOrHideProperty');
             if(lang.isArray(symbolicNames) && lang.isArray(showHides) && symbolicNames.length > 0 && showHides.length  > 0 && symbolicNames.length == showHides.length) {
                 controller.beginChangeSet();
                 for(var x  = 0; x < symbolicNames.length ; x++) {
+                    if(this.enableConsoleDebug)
+                        console.log('symbolic Name '+symbolicNames[x] +" , showHide "+showHides[x]);
                     controller.getPropertyController(symbolicNames[x]).set("hidden",showHides[x]);
                 }
                 controller.endChangeSet();
