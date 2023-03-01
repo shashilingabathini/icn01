@@ -9,20 +9,20 @@ define(["dojo/_base/declare","icn/adaptors/AddCaseAdaptor"], function(declare,Ad
             this.payload = payload;
             this.uniqueOpCode = uniqueOpCode;
 
-            initCall();
+            this.initCall();
         },
         initCall : function() {
             switch (pageName) {
                 case "AddCasePage" :
-                    initializeAddCasePageCalls();
+                    this.initializeAddCasePageCalls();
                     break;
 
                 case "CaseDetailsPage" :
-                    initializeCaseDetailsPageCalls();
+                    this.initializeCaseDetailsPageCalls();
                     break;
 
                 case "WorkDetailsPage" :
-                    initializeWorkDetailsPageCalls();
+                    this.initializeWorkDetailsPageCalls();
                     break;
             }
         },
