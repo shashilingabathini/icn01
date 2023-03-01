@@ -24,9 +24,10 @@ define(["dojo/_base/declare","icm/model/properties/controller/ControllerManager"
                     console.log(' solution prefix is '+prefix);
                 var pocTypeName =  prefix + "_" + "POCType";
                 var propertyController = controller.getPropertyController(pocTypeName);
-                propertyController.watch("value",lang.hitch(this,function(v) {
+                propertyController.watch("value",lang.hitch(this,function(v,n) {
                     if(this.enableConsoleDebug) {
-                        console.log('v is '+v);
+                        console.log('v is '+v+" , n is "+n);
+
                     }
                     if(v && v == "POC01") { // show only poc 01 comments text area and hide poc 02 comments area
                           var p1 = prefix + "_" + "POCType1Comments";
