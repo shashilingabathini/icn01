@@ -27,18 +27,17 @@ define(["dojo/_base/declare","icm/model/properties/controller/ControllerManager"
                 if(this.enableConsoleDebug)
                      console.log(' POC Type Controller  is '+propertyController);
                 propertyController.watch("value",lang.hitch(this,function(v,n) {
-                    console.log('v is '+v+" , n is "+n);
                     if(this.enableConsoleDebug) {
                         console.log('v is '+v+" , n is "+n);
                     }
                     if(v && v == "POC01") { // show only poc 01 comments text area and hide poc 02 comments area
                           var p1 = prefix + "_" + "POCType1Comments";
                           var p2 =  prefix + "_" + "POCType2Comments";
-                          this.showOrHideProperty([p1,p2], [true, false],controller);
-                    } else if(v && v == "POC02") {
+                          this.showOrHideProperty([p1,p2], [false, true],controller);
+                    } else if(v && v == "POC02") { // show only p2 and hide p1
                           var p1 = prefix + "_" + "POCType1Comments";
                           var p2 =  prefix + "_" + "POCType2Comments";
-                          this.showOrHideProperty([p1,p2], [false, true],controller);
+                          this.showOrHideProperty([p1,p2], [true, false],controller);
                     }
                 })); // watch the changes of this field
                // this.unbindController(editable);
