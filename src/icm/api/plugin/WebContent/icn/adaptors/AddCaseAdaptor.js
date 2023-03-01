@@ -2,14 +2,14 @@ define(["dojo/_base/declare","icm/model/properties/controller/ControllerManager"
 
     return declare("icn/adaptors/AddCaseAdaptor", [] , {
 
-        enableWindowDebug : window.location.href.indexOf("enableWindowDebug") > 0 ,
+        enableWindowDebug : window.location.href.indexOf("enableWindowDebug=true") > 0 ,
 
-        enableConsoleDebugs : window.location.href.indexOf("enableConsoleDebugs") > 0,
+        enableConsoleDebug : window.location.href.indexOf("enableConsoleDebug=true") > 0,
 
         showCommentsByPOCName : function(adaptor , payload) {
             // adaptor is a script adaptor
             console.log('showCommentsByPOCName is called');
-            if(enableWindowDebug) {
+            if(this.enableWindowDebug) {
                 window.adaptor = adaptor;
                 window.payload = payload;
             }
@@ -17,15 +17,15 @@ define(["dojo/_base/declare","icm/model/properties/controller/ControllerManager"
             if(payload) {
                 var editable = payload.caseEditable;
                 var controller = this.bindController(editable);
-                if(enableWindowDebug)
+                if(this.enableWindowDebug)
                     window.controller = controller;
                 var prefix = payload.caseType.getSolution().getPrefix(); // solution prefix
-                if(enableConsoleDebugs)
+                if(this.enableConsoleDebug)
                     console.log(' solution prefix is '+prefix);
                 var pocTypeName =  prefix + "_" + "POCType";
                 var propertyController = controller.getPropertyController(pocTypeName);
                 propertyController.watch("value",lang.hitch(this,function(o  , n) {
-                    if(enableConsoleDebugs) {
+                    if(this.enableConsoleDebug) {
                         console.log(pocTypeName + " changes are detected in ui .");
                         console.log("Old "+o+" , New "+n);
                     }
