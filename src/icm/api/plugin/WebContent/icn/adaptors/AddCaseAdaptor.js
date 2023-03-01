@@ -40,7 +40,7 @@ define(["dojo/_base/declare","icm/model/properties/controller/ControllerManager"
                           this.showOrHideProperty([p1,p2], [true, false],controller);
                     }
                 })); // watch the changes of this field
-               // this.unbindController(editable);
+                this.unbindController(editable);
             }
         },
         bindController : function(editable) {
@@ -50,6 +50,8 @@ define(["dojo/_base/declare","icm/model/properties/controller/ControllerManager"
             return ControllerManager.unbind(editable);
         },
         showOrHideProperty : function(symbolicNames , showHides , controller) {
+            if(enableConsoleDebug)
+                console.log('Entry >> showOrHideProperty');
             if(lang.isArray(symbolicNames) && lang.isArray(showHides) && symbolicNames.length > 0 && showHides.length  > 0 && symbolicNames.length == showHides.length) {
                 controller.beginChangeSet();
                 for(var x  = 0; x < symbolicNames.length ; x++) {
@@ -57,6 +59,8 @@ define(["dojo/_base/declare","icm/model/properties/controller/ControllerManager"
                 }
                 controller.endChangeSet();
             }
+            if(enableConsoleDebug)
+                console.log('EXIT >> showOrHideProperty');
         }
 
     });
