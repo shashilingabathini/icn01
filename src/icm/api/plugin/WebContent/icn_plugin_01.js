@@ -19,4 +19,19 @@ require([
     }),true);
 
     window.handler = handler;
+
+    // all script adaptor handlers for [AddCase] Page
+
+    function AddCaseAdaptor(adaptor , payload) { // this is only meant for add case action
+        console.log(adaptor);
+        console.log(payload);
+        if(!adaptor || !payload)
+            return;
+        this.adaptor = adaptor;
+        this.payload =  payload; // local to function class variables
+
+
+
+    }
+
 });

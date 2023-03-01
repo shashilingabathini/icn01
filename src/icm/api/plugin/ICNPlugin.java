@@ -1,6 +1,6 @@
 package icm.api.plugin;
 
-import com.ibm.ecm.extension.*;
+import com.ibm.ecm.extension.Plugin;
 
 import java.util.Locale;
 
