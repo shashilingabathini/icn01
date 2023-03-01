@@ -27,7 +27,6 @@ define(["dojo/_base/declare","icm/model/properties/controller/ControllerManager"
                 propertyController.watch("value",lang.hitch(this,function(v,n) {
                     if(this.enableConsoleDebug) {
                         console.log('v is '+v+" , n is "+n);
-
                     }
                     if(v && v == "POC01") { // show only poc 01 comments text area and hide poc 02 comments area
                           var p1 = prefix + "_" + "POCType1Comments";
@@ -39,7 +38,7 @@ define(["dojo/_base/declare","icm/model/properties/controller/ControllerManager"
                           this.showOrHideProperty([p1,p2], [false, true],controller);
                     }
                 })); // watch the changes of this field
-                this.unbindController(editable);
+               // this.unbindController(editable);
             }
         },
         bindController : function(editable) {
