@@ -2,9 +2,12 @@ define(["dojo/_base/declare"],function(declare) {
 
     return declare("icn/adaptors/AddCaseAdaptor", [] , {
 
-         onLoadAddCasePage : function(adaptor , payload) {
-            console.log('adaptor is called');
-         }
+        showCommentsByPOCName : function(adaptor , payload) {
+            // adaptor is a script adaptor
+            console.log('showCommentsByPOCName is called');
+            window.adaptor = adaptor;
+            window.payload = payload;
+        }
 
     });
 
