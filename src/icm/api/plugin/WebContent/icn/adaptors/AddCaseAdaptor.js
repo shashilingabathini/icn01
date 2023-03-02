@@ -48,17 +48,9 @@ define([
                 var coordination = payload.coordination;
                 if(coordination) {
                     // add validate  checks for case page
-                    coordination.participate(Constants.CoordTopic.VALIDATE,lang.hitch(this,function() {
+                    coordination.participate(Constants.CoordTopic.VALIDATE,lang.hitch(this,function(context, complete , abort) {
                         if(this.enableConsoleDebug)
                             console.log('coordination is started b/w add action widget VALIDATE');
-                    })).step(Constants.CoordTopic.VALIDATE,lang.hitch(this,function(result, next, skip, context) {
-                        if(this.enableConsoleDebug)
-                             console.log('coordination step  started b/w add action widget VALIDATE');
-                        next();
-                    }) , lang.hitch(this,function(error, next, skip, context) {
-                            if(this.enableConsoleDebug)
-                                 console.log('coordination step  error callback started b/w add action widget VALIDATE');
-                            next();
                     }));
                 }
 
