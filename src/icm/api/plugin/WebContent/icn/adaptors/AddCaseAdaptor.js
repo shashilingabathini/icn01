@@ -1,7 +1,7 @@
 define([
 "dojo/_base/declare",
 "icm/model/properties/controller/ControllerManager",
-"dojo/_base/lang"
+"dojo/_base/lang",
 "icm/base/Constants"
 ],function(declare,ControllerManager,lang,Constants) {
 
