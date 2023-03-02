@@ -9,7 +9,6 @@ define([
         "icn/adaptors/AddCaseAdaptor", [] , {
 
         enableWindowDebug : window.location.href.indexOf("enableWindowDebug=true") > 0 ,
-
         enableConsoleDebug : window.location.href.indexOf("enableConsoleDebug=true") > 0,
 
         showCommentsByPOCName : function(adaptor , payload) {
@@ -50,14 +49,14 @@ define([
                 if(coordination) {
                     // add validate  checks for case page
                     coordination.participate(Constants.CoordTopic.VALIDATE,lang.hitch(this,function() {
-                        if(enableConsoleDebug)
+                        if(this.enableConsoleDebug)
                             console.log('coordination is started b/w add action widget VALIDATE');
                     })).step(Constants.CoordTopic.VALIDATE,lang.hitch(this,function(result, next, skip, context) {
-                        if(enableConsoleDebug)
+                        if(this.enableConsoleDebug)
                              console.log('coordination step  started b/w add action widget VALIDATE');
                         next();
                     }) , lang.hitch(this,function(error, next, skip, context) {
-                            if(enableConsoleDebug)
+                            if(this.enableConsoleDebug)
                                  console.log('coordination step  error callback started b/w add action widget VALIDATE');
                             next();
                     }));
