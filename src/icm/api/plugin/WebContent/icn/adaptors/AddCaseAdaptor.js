@@ -1,6 +1,12 @@
-define(["dojo/_base/declare","icm/model/properties/controller/ControllerManager","dojo/_base/lang"],function(declare,ControllerManager,lang) {
+define([
+"dojo/_base/declare",
+"icm/model/properties/controller/ControllerManager",
+"dojo/_base/lang"
+"icm/base/Constants"
+],function(declare,ControllerManager,lang,Constants) {
 
-    return declare("icn/adaptors/AddCaseAdaptor", [] , {
+    return declare(
+        "icn/adaptors/AddCaseAdaptor", [] , {
 
         enableWindowDebug : window.location.href.indexOf("enableWindowDebug=true") > 0 ,
 
@@ -40,7 +46,23 @@ define(["dojo/_base/declare","icm/model/properties/controller/ControllerManager"
                           this.showOrHideProperty([p1,p2], [true, false],controller);
                     }
                 })); // watch the changes of this field
-               // this.unbindController(editable); // adding new comments just for the sake of deployment checks
+                var coordination = payload.coordination;
+                if(coordination) {
+                    // add validate  checks for case page
+                    coordination.participate(Constants.CoordTopic.VALIDATE,lang.hitch(this,function() {
+                        if(enableConsoleDebug)
+                            console.log('coordination is started b/w add action widget VALIDATE');
+                    })).step(Constants.CoordTopic.VALIDATE,lang.hitch(this,function(result, next, skip, context) {
+                        if(enableConsoleDebug)
+                             console.log('coordination step  started b/w add action widget VALIDATE');
+                        next();
+                    }) , lang.hitch(this,function(error, next, skip, context) {
+                            if(enableConsoleDebug)
+                                 console.log('coordination step  error callback started b/w add action widget VALIDATE');
+                            next();
+                    }));
+                }
+
             }
         },
         bindController : function(editable) {
