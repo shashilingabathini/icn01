@@ -51,6 +51,8 @@ define([
                     coordination.participate(Constants.CoordTopic.VALIDATE,lang.hitch(this,function(context, complete , abort) {
                         if(this.enableConsoleDebug)
                             console.log('coordination is started b/w add action widget VALIDATE');
+
+                        complete();
                     }));
                 }
 
